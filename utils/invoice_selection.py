@@ -1,25 +1,33 @@
 import json
-import pickle
+#import pickle
 import numpy as np
 import pandas as pd
 from utils.helper import *
 import os
+from sklearn.externals import joblib
 
 class fit_for_auction_check:
 
     	
     def __init__(self):
         self.mandate_cols=['Invoice Value','Invoice Load Date in PV','Original Invoice Pay Schedule Date']
-        with open('../models/cat_dict.pk' ,'rb') as f:
-            self.cat_dict = pickle.load(f)
-        with open('../models/mapper.pk' ,'rb') as f:
-            self.mapper = pickle.load(f)
-        with open('../models/mapper_no_supp.pk' ,'rb') as f:
-            self.mapper_no_supp = pickle.load(f) 
-        with open('../models/rf.pk' ,'rb') as f:
-            self.rf = pickle.load(f)
-        with open('../models/rf_no_supp.pk' ,'rb') as f:
-            self.rf_no_supp = pickle.load(f)
+        #with open('../models/cat_dict.pk' ,'rb') as f:
+        #    self.cat_dict = pickle.load(f)
+        #with open('../models/mapper.pk' ,'rb') as f:
+        #    self.mapper = pickle.load(f)
+        #with open('../models/mapper_no_supp.pk' ,'rb') as f:
+        #    self.mapper_no_supp = pickle.load(f) 
+        #with open('../models/rf.pk' ,'rb') as f:
+        #    self.rf = pickle.load(f)
+        #with open('../models/rf_no_supp.pk' ,'rb') as f:
+        #    self.rf_no_supp = pickle.load(f)
+        
+        self.cat_dict=joblib.load('../models/cat_dict.pk')
+        self.mapper=joblib.load('../models/mapper.pk')
+        self.mapper_no_supp=joblib.load('../models/mapper_no_supp.pk')
+        self.rf=joblib.load('../models/rf.pk')
+        self.rf_no_supp=joblib.load('../models/rf_no_supp.pk')
+        
             
     def preprocess(self,df1):
         df=df1.copy(deep=True)
