@@ -2,5 +2,4 @@ pandas==0.24.1
 scikit-learn
 sklearn-pandas
 numpy
-pickle
 

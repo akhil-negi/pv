@@ -8,6 +8,7 @@ import warnings
 import sklearn
 from sklearn.preprocessing import StandardScaler
 from sklearn_pandas import DataFrameMapper
+warnings.filterwarnings('ignore')
 
 def rf_feat_importance(m, df):
     return pd.DataFrame({'cols':df.columns, 'imp':m.feature_importances_}
